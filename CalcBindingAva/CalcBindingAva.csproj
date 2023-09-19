@@ -3,14 +3,14 @@
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
+    <Nullable>annotations</Nullable>
     <Authors>Alexander Zinchenko, netwww1</Authors>
     <Description>CalcBindingAva - small Avalonia library providing Binding markup extension with path expressions directly in Avalonia xaml</Description>
     <Copyright>Copyright © netwww1 2023</Copyright>
     <PackageProjectUrl>https://github.com/netwww1/CalcBindingAva</PackageProjectUrl>
     <PackageIcon>avalonia-logo.png</PackageIcon>
     <RepositoryUrl>https://github.com/netwww1/CalcBindingAva</RepositoryUrl>
-    <RepositoryType>Avalonia Xaml Binding Expression CalcBindingAva CalcBinding calc CalcBinding.Core core CalcBindingCore</RepositoryType>
+    <RepositoryType>Avalonia Xaml Binding Expression CalcBindingAva CalcBinding CalcBinding.Core CalcBindingCore</RepositoryType>
     <PackageReleaseNotes>Support Avalonia 11.0.4 and .Net 6.0</PackageReleaseNotes>
     <AssemblyVersion>2.5.2.0</AssemblyVersion>
     <FileVersion>2.5.2.0</FileVersion>
