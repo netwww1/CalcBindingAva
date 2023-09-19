@@ -15,3 +15,9 @@ Download source code and compiled by vs2022.
 ## version 2.5.2.0
 
 * Based on commit  [fc01ad5](https://github.com/Alex141/CalcBinding/commit/fc01ad59b80650883133b8586a1e79ff121af669)
+
+# Donation
+
+If you like this project you are welcome to support it!
+
+Go to [CalcBinding](https://github.com/Alex141/CalcBinding)
