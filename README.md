@@ -8,7 +8,7 @@ CalcBindingAva supports Avalonia 11.0.4 and .Net 6.0 only.
 
 ## Install
 
-Download source code and compiled by vs2022.
+Download source code and compil CalcBindingAva.csproj by vs2022.
 
 ## Overview
 Following example shows xaml snippets with standart Binding and with CalcBinding in very simple case:
@@ -338,7 +338,7 @@ public class MyMathConverter : IValueConverter
   "Math.Acos", "Math.Atan","Math.Pow", "Math.Log", "!", "- (unary)"};
   ```
 
-## 6. NO Bool to Visibility automatic convertion
+## 6. NO Bool to Visibility automatic convertion in Avalonia
 
 ## 7. Other feautures
 
