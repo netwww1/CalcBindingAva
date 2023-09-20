@@ -4,7 +4,7 @@ CalcBindingAva is a fork of [CalcBinding](https://github.com/Alex141/CalcBinding
 
 CalcBindingAva supports Avalonia 11.0.4 and .Net 6.0 only.
 
-[CalcBinding](https://github.com/Alex141/CalcBinding) is an advanced Binding markup extension that allows you to write calculated binding expressions in xaml, without custom converters. CalcBinding can automaticaly perfom bool to visibility conversion, different algebraic operations, inverse your expression and more. CalcBinding makes binding expressions shorter and more user-friendly.
+[CalcBinding](https://github.com/Alex141/CalcBinding) is an advanced Binding markup extension that allows you to write calculated binding expressions in xaml, without custom converters. CalcBinding can automaticaly perfom different algebraic operations, inverse your expression and more. CalcBinding makes binding expressions shorter and more user-friendly.
 
 ## Install
 
