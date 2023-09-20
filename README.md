@@ -4,7 +4,7 @@ CalcBindingAva is a fork of [CalcBinding](https://github.com/Alex141/CalcBinding
 
 CalcBindingAva supports Avalonia 11.0.4 and .Net 6.0 only.
 
-[CalcBinding](https://github.com/Alex141/CalcBinding) is an advanced Binding markup extension that allows you to write calculated binding expressions in xaml, without custom converters. CalcBinding can automaticaly perfom bool to visibility convertion, different algebraic operations, inverse your expression and more. CalcBinding makes binding expressions shorter and more user-friendly.
+[CalcBinding](https://github.com/Alex141/CalcBinding) is an advanced Binding markup extension that allows you to write calculated binding expressions in xaml, without custom converters. CalcBinding can automaticaly perfom bool to visibility conversion, different algebraic operations, inverse your expression and more. CalcBinding makes binding expressions shorter and more user-friendly.
 
 ## Install
 
@@ -92,7 +92,7 @@ MVVM Window example:
   ```xml
   <TextBox Text = "{c:Binding 'Math.Sin(A*2)-5'}"/> {two way binding will be created}
   ```
-6. **NO** convertion of bool expression to Visibility and back, because Avalonia use bool only.
+6. **NO** conversion of bool expression to Visibility and back, because Avalonia use bool only.
 
 7. Other features such as **string and char constants support** and other: [description](#7-other-feautures)
 
@@ -308,7 +308,7 @@ Avalonia doesn't contain Visibility enum.
   <TextBox Text = "{c:Binding 'Math.Sin(A*2)-5'}">
   ```
 
-CalcBinding recognizes that this expression has inversed expression 'A = Math.Asin(TextBox.Content + 2) / 2' and will use this expression for convertion dependency property TextBox.Text to property A of ViewModel when Text of textBox changes.
+CalcBinding recognizes that this expression has inversed expression 'A = Math.Asin(TextBox.Content + 2) / 2' and will use this expression for conversion dependency property TextBox.Text to property A of ViewModel when Text of textBox changes.
 
 Previous expression equivalents to following usual code:
 
@@ -343,7 +343,7 @@ public class MyMathConverter : IValueConverter
   "Math.Acos", "Math.Atan","Math.Pow", "Math.Log", "!", "- (unary)"};
   ```
 
-## 6. NO Bool to Visibility automatic convertion in Avalonia
+## 6. NO Bool to Visibility automatic conversion in Avalonia
 
 ## 7. Other feautures
 
