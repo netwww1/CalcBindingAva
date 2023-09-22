@@ -432,20 +432,6 @@ Setting RelativeSource property to TemplatedParent value makes CalcBinding simil
 
 3. In path expression you can't use any methods of .Net classes except of Math class.
 
-## What is inside?
-
-CalcBinding uses DynamicExpresso library to parse string expression to Linq Expression and compiled expression tree for binding.
-DynamicExpresso is in fact a fork of DynamicLinq library, with many advantages and bug fixes compared with DynamicLinq (e.x. floating point parsing depending on CurrentCulture damn bug). 
-
-String expression is parsed only one time, when binding is initialized. In init section CalcBinding analyzer finds tokens in path expression: property path, static property path, Math expression and Enum expression. When binding is triggered first time, special binding converter replaces each property path and static propert path with variable of appropriate type and call DynamicExpresso to compile expression into delegate that takes new variables. 
-
-Working with the compiled expression increases speed of binding compared with parsing of string expression each time. On the development machine, these times are 0.03s for parsing each time and 0.001-0.003 s for working with the compiled expression
-
-### Notes 
-  1. Enum constants are using in expression for Dynamic Expresso directly, with collection of types of known Enums.
-  2. Binding for collections (ListView, ListBox, DataGrid etc) are created as many times how many times it were declared in xaml. For example, if you have ListView with 10000 elements, and each element have template consisting of 5 controls which are all binded then only 5 Binding instances would be created.
-  3. If one or more property pathes changes type of resulting property then compiling expression is recompilied.
-
 ## 10. Casts for a part of DynamicExpresso built-in types , and add some relative keywords
 
 Casts for the following types
@@ -467,6 +453,20 @@ New keywords
 ```xml
 <TextBox Text="{c:Binding '\' ObjItem: \' + ((ObjItem is string) ? (ObjItem as string) : \'Unknown\')'}"/>
 ```
+
+## What is inside?
+
+CalcBinding uses DynamicExpresso library to parse string expression to Linq Expression and compiled expression tree for binding.
+DynamicExpresso is in fact a fork of DynamicLinq library, with many advantages and bug fixes compared with DynamicLinq (e.x. floating point parsing depending on CurrentCulture damn bug). 
+
+String expression is parsed only one time, when binding is initialized. In init section CalcBinding analyzer finds tokens in path expression: property path, static property path, Math expression and Enum expression. When binding is triggered first time, special binding converter replaces each property path and static propert path with variable of appropriate type and call DynamicExpresso to compile expression into delegate that takes new variables. 
+
+Working with the compiled expression increases speed of binding compared with parsing of string expression each time. On the development machine, these times are 0.03s for parsing each time and 0.001-0.003 s for working with the compiled expression
+
+### Notes 
+  1. Enum constants are using in expression for Dynamic Expresso directly, with collection of types of known Enums.
+  2. Binding for collections (ListView, ListBox, DataGrid etc) are created as many times how many times it were declared in xaml. For example, if you have ListView with 10000 elements, and each element have template consisting of 5 controls which are all binded then only 5 Binding instances would be created.
+  3. If one or more property pathes changes type of resulting property then compiling expression is recompilied.
 
 # Q&A
 ```
