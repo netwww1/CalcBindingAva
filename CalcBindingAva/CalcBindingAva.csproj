@@ -12,11 +12,11 @@
     <RepositoryUrl>https://github.com/netwww1/CalcBindingAva</RepositoryUrl>
     <RepositoryType>Avalonia Xaml Binding Expression CalcBindingAva CalcBinding CalcBinding.Core CalcBindingCore</RepositoryType>
     <PackageReleaseNotes>Support Avalonia 11.0.4 and .Net 6.0</PackageReleaseNotes>
-    <AssemblyVersion>2.5.2.0</AssemblyVersion>
-    <FileVersion>2.5.2.0</FileVersion>
+    <AssemblyVersion>2.5.3.0</AssemblyVersion>
+    <FileVersion>2.5.3.0</FileVersion>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
-    <Version>2.5.2</Version>
+    <Version>2.5.3</Version>
     <PackageIcon>avalonia-logo.png</PackageIcon>
   </PropertyGroup>
 

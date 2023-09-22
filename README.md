@@ -4,11 +4,13 @@ CalcBindingAva is a fork of [CalcBinding](https://github.com/Alex141/CalcBinding
 
 CalcBindingAva supports Avalonia 11.0.4 and .Net 6.0 only.
 
-[CalcBinding](https://github.com/Alex141/CalcBinding) is an advanced Binding markup extension that allows you to write calculated binding expressions in xaml, without custom converters. CalcBinding can automaticaly perfom different algebraic operations, inverse your expression and more. CalcBinding makes binding expressions shorter and more user-friendly.
+[CalcBinding](https://github.com/Alex141/CalcBinding) is an advanced Binding markup extension that allows you to write calculated binding expressions in xaml, without custom converters.
+
+CalcBindingAva can automaticaly perfom different algebraic operations, inverse your expression and more. CalcBindingAva makes binding expressions shorter and more user-friendly.
 
 ## Install
 
-CalcBinding is available at [NuGet](https://www.nuget.org/packages/CalcBindingAva/). You can install package using:
+CalcBindingAva is available at [NuGet](https://www.nuget.org/packages/CalcBindingAva/). You can install package using:
 ```
 PM> Install-Package CalcBindingAva 
 ```
@@ -16,7 +18,7 @@ PM> Install-Package CalcBindingAva
 Or download source code and compile CalcBindingAva.csproj by vs2022.
 
 ## Overview
-Following example shows xaml snippets with standart Binding and with CalcBinding in very simple case:
+Following example shows xaml snippets with standart Binding and with CalcBindingAva in very simple case:
 
 ### Before:
 
@@ -96,7 +98,11 @@ MVVM Window example:
 
 7. Other features such as **string and char constants support** and other: [description](#7-other-feautures)
 
-8. General restrictions: [description](#8-general-restrictions)
+8. Tracing
+
+9. General restrictions: [description](#8-general-restrictions)
+
+10. Casts for a part of DynamicExpresso built-in types , and add some relative keywords
 
 # Documentation
 
@@ -146,17 +152,31 @@ One should know, that xaml is generally xml format, and xml doesn't support usin
 
 #### right:
 ```<xml>
-<TextBox Text="{c:Binding '(A == 2)?IsChecked : IsFull}"/> <!-- right -->
-<TextBox Text="{c:Binding '(A == 2)?IsChecked :!IsFull}"/> <!-- right -->
-<TextBox Text="{c:Binding '(A == 2) ? IsChecked :4 + IsFull}"/> <!-- right -->
+<TextBox Text="{c:Binding '(A == 2)?IsChecked : IsFull'}"/> <!-- right -->
+<TextBox Text="{c:Binding '(A == 2)?IsChecked :!IsFull'}"/> <!-- right -->
+<TextBox Text="{c:Binding '(A == 2) ? IsChecked :4 + IsFull'}"/> <!-- right -->
 ```
 
 #### wrong:
 ```<xml>
-<TextBox Text="{c:Binding '(A == 2)?IsChecked:IsFull}"/> <!-- wrong -->
+<TextBox Text="{c:Binding '(A == 2)?IsChecked:IsFull'}"/> <!-- wrong -->
 ```
 
 That restricition is caused by path analyzer work that finds [static properties](#2-static-properties)
+
+2. Expressions between operator ':' should return same types or types that can be implicitly converted, even though one of the expressions will not be selected
+
+#### right:
+```<xml>
+<TextBox Text="{c:Binding '(A == 2) ? 111L : ((sbyte)123)'}"/> <!-- right -->
+<TextBox Text="{c:Binding '\' ObjItem: \' + ((ObjItem is string) ? (ObjItem as string) : (233).ToString())'}"/> <!-- right -->
+```
+
+#### wrong:
+```<xml>
+<TextBox Text="{c:Binding '(A == 2) ? 111UL : 123'}"/> <!-- wrong between ulong and int -->
+<TextBox Text="{c:Binding '\' ObjItem: \' + ((ObjItem is string) ? ObjItem : \'233\')'}"/> <!-- wrong when ObjItem is not string -->
+```
 
 ## 2. Static properties
 
@@ -426,6 +446,28 @@ Working with the compiled expression increases speed of binding compared with pa
   2. Binding for collections (ListView, ListBox, DataGrid etc) are created as many times how many times it were declared in xaml. For example, if you have ListView with 10000 elements, and each element have template consisting of 5 controls which are all binded then only 5 Binding instances would be created.
   3. If one or more property pathes changes type of resulting property then compiling expression is recompilied.
 
+## 10. Casts for a part of DynamicExpresso built-in types , and add some relative keywords
+
+Casts for the following types
+
+	Object object 
+	Boolean bool 
+	Char char
+	String string
+	SByte sbyte Byte byte
+	Int16 short UInt16 ushort Int32 int UInt32 uint Int64 long UInt64 ulong
+	Single float Double double Decimal decimal 
+	DateTime TimeSpan
+	Guid
+
+New keywords
+
+	true false is as
+
+```xml
+<TextBox Text="{c:Binding '\' ObjItem: \' + ((ObjItem is string) ? (ObjItem as string) : \'Unknown\')'}"/>
+```
+
 # Q&A
 ```
 1. I wrote logical expression A && B, A < B, A <= B, but my xaml doesn't compile, what's wrong?
@@ -441,6 +483,10 @@ In markup extension we can't use double quotes, so we can use single quotes and 
 Yes, you can, but with setting RelativeSource property, see section [TemplateBinding](#templatebinding)
 
 # Release notes
+
+## version 2.5.3
+
+* Support casts for a part of DynamicExpresso built-in types , and add some relative keywords
 
 ## version 2.5.2.0
 

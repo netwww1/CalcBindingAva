@@ -22,7 +22,17 @@ namespace CalcBinding.PathAnalysis
 
         public static string[] Keywords = new[]
             {
-                "null"
+                "null",
+                "Object", "object",
+                "Boolean", "bool",
+                "Char", "char",
+                "String", "string",
+                "SByte", "sbyte", "Byte", "byte",
+                "Int16", "short", "UInt16", "ushort", "Int32", "int", "UInt32", "uint", "Int64", "long", "UInt64", "ulong",
+                "Single", "float", "Double", "double", "Decimal", "decimal",
+                "DateTime", "TimeSpan",
+                "Guid",
+                "true", "false", "is", "as"
             };
 
         public static char[] QuoteTerminals = new[]
