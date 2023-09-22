@@ -450,7 +450,9 @@ New keywords
 
 	true false is as
 
+Examples
 ```xml
+<TextBox Text="{c:Binding '(A == 2) ? 111L : ((sbyte)123)'}"/>
 <TextBox Text="{c:Binding '\' ObjItem: \' + ((ObjItem is string) ? (ObjItem as string) : \'Unknown\')'}"/>
 ```
 
